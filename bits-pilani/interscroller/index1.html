@@ -1,0 +1,163 @@
+
+<html>
+    <head>
+    <meta charset="utf-8">
+    <title>Motorola Interstitial</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">-->
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-102008198-5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-1020081984-5');
+    </script>
+    
+    </head>
+    <body>
+    <style>
+      * {
+      -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none;   /* Chrome/Safari/Opera */
+      -khtml-user-select: none;    /* Konqueror */
+      -moz-user-select: none;      /* Firefox */
+      -ms-user-select: none;       /* Internet Explorer/Edge */
+      user-select: none;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      -khtml-tap-highlight-color: rgba(0, 0, 0, 0);
+      -moz-tap-highlight-color: rgba(0, 0, 0, 0);
+      -ms-tap-highlight-color: rgba(0, 0, 0, 0);
+      tap-highlight-color: rgba(0, 0, 0, 0);
+      outline: 0;
+      font-family: 'Helvetica', 'Roboto', sans-serif;    
+    }
+    html, body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    overflow: hidden;
+    }
+    div {
+    height:100%;
+    margin:auto;
+    
+    background-image:url('bits6.jpg');
+    top: 0;
+    background-size: contain;
+    background-position: 50%;
+    background-repeat: no-repeat;
+ 
+    }
+    
+    </style>
+    <div id ="content">
+    </div>
+    <script type="text/javascript">
+      "use strict";
+      function getMobileOS() {
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+       
+        if (/android/i.test(userAgent)) {
+          return "android";
+        }
+       
+        // iOS detection from: http://stackoverflow.com/a/9039885/177710
+        if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+          return "ios";
+        }
+       
+        return "unknown";
+      }
+      
+      var osinfo = getMobileOS();///"android";//"none";
+      if (osinfo == 'ios') {
+    
+        }else if(osinfo == 'android'){
+          var metaTag=document.createElement('meta');
+        metaTag.name = "viewport"
+        metaTag.content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+        document.getElementsByTagName('head')[0].appendChild(metaTag);
+    }
+        
+      </script>
+    <script>
+    function alertSize() {
+    var myWidth = 0, myHeight = 0;
+    if( typeof( window.innerWidth ) == 'number' ) {
+    //Non-IE
+    myWidth = window.innerWidth;
+    myHeight = window.innerHeight;
+    } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+    //IE 6+ in 'standards compliant mode'
+    myWidth = document.documentElement.clientWidth;
+    myHeight = document.documentElement.clientHeight;
+    } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+    //IE 4 compatible
+    myWidth = document.body.clientWidth;
+    myHeight = document.body.clientHeight;
+    }
+    document.getElementById("content").style.width = myWidth + "px";
+    document.getElementById("content").addEventListener("click", function(){
+    gtag('event','Click', {'event_category': 'Coolwings','event_label': 'coolwings_label'});
+    
+     // jstoapp_gifclk();
+    });
+    }
+    
+    function jstoapp_gifclk()
+    {
+    try{
+      gtag('event','Click', {'event_category': 'Coolwings','event_label': 'coolwings_label'});
+      if (osinfo == 'ios') {
+                webkit.messageHandlers.openUrl.postMessage(
+                {
+                    url: "https://www.bitsadmission.com/"
+                });
+            }else if(osinfo == 'android'){
+          app.gifclicktracker("https://www.bitsadmission.com/");
+        }
+    
+    }
+      catch(err) {
+        document.getElementById("content").innerHTML = err.message;
+      }
+      return false;
+    }
+    
+    var domIsReady = (function(domIsReady) {
+    var isBrowserIeOrNot = function() {
+    return (!document.attachEvent || typeof document.attachEvent === "undefined" ? 'not-ie' : 'ie');
+    }
+    domIsReady = function(callback) {
+    if(callback && typeof callback === 'function'){
+    if(isBrowserIeOrNot() !== 'ie') {
+    document.addEventListener("DOMContentLoaded", function() {
+    return callback();
+    });
+    } else {
+    document.attachEvent("onreadystatechange", function() {
+    if(document.readyState === "complete") {
+    return callback();
+    }
+    });
+    }
+    } else {
+    console.error('The callback is not a function!');
+    }
+    }
+    return domIsReady;
+    })(domIsReady || {});
+    (function(document, window, domIsReady, undefined) {
+    domIsReady(function() {
+    alertSize();
+    gtag('event','Adload', {'event_category': 'Interstitial','event_label': 'coolwings_label'});
+    });
+    })(document, window, domIsReady);
+    </script>
+    
+    </body>
+    </html>

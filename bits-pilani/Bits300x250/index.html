@@ -1,0 +1,290 @@
+<html>
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.13.2/TweenMax.min.js"></script>
+	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+
+	<script type="text/javascript">
+		var clickTag = "https://www.bits-pilani.ac.in/";
+	</script>
+
+
+	<style type="text/css">
+		@font-face {
+  font-family: 'PilatDemi';
+  src: url('PilatDemi.otf') format('opentype');
+}
+
+body {
+    font-family: 'PilatDemi', sans-serif;
+    font-size: 1.24rem;
+    font-weight: 500;
+    line-height: 1.8
+}
+		html,
+		body {
+			width: 100%;
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			background-color: #000000;
+		}
+
+		#banner {
+			width: 298px;
+			height: 248px;
+			overflow: hidden;
+			background-color: #fff;
+			margin-top: 0;
+			position: absolute;
+			/*visibility:hidden;*/
+			z-index: 0;
+			border: 1px solid #6B79C0;
+			cursor: pointer;
+		}
+
+		#banner:hover #cta {
+			background-color: #6B79C0;
+			color: #fff;
+		}
+
+		#stage {
+			width: 288px;
+			height: 237px;
+			overflow: hidden;
+			background-color: #6B79C0;
+			margin: 6px 0 0 5px;
+			position: absolute;
+			/*visibility:hidden;*/
+			z-index: 0;
+		}
+
+		#logo {
+			margin: 5px 0 0 213px;
+			position: absolute;
+			z-index: 0;
+		}
+
+		#cta {
+			width: 87px;
+			height: 25px;
+			overflow: hidden;
+			margin: 207px 0 0 2px;
+			font-size: 15px;
+			background-color: #fff;
+			position: absolute;
+			z-index: 0;
+			border: 1px solid #222254;
+			color: #222254;
+
+			-webkit-transition: all 1s ease;
+			-moz-transition: all 1s ease;
+			-o-transition: all 1s ease;
+			-ms-transition: all 1s ease;
+			transition: all 1s ease;
+
+		}
+
+		#cta p {
+			position: absolute;
+			margin: -2 0 0 4px;
+
+		}
+
+		/*#cta:hover{
+			cursor: pointer;
+			background-color: #00b1a9;
+			color: #fff;
+		}*/
+		.unselectableText {
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-o-user-select: none;
+			user-select: none;
+		}
+
+		/* #bgImage{
+			background-image: url(background.png);
+			width: 288px;
+			height: 192px;
+			position: absolute;
+			z-index: 0;
+		} */
+
+		#c1 {
+			visibility: hidden;
+			width: 140px;
+			height: 41px;
+			z-index: 1;
+			position: absolute;
+			line-height: 7px;
+			text-align: center;
+			/*margin: 80px 0 0 80px;*/
+		}
+
+		#c2 {
+			visibility: hidden;
+			width: 140px;
+			height: 41px;
+			z-index: 1;
+			position: absolute;
+			line-height: 7px;
+			text-align: center;
+			/*margin: 66px 0 0 58px;*/
+		}
+
+		#c3 {
+			visibility: hidden;
+			width: 140px;
+			height: 41px;
+			z-index: 1;
+			position: absolute;
+			line-height: 7px;
+			text-align: center;
+			/*margin: 77px 0 0 53px;*/
+		}
+
+		#c4 {
+			visibility: hidden;
+			width: 140px;
+			height: 41px;
+			z-index: 1;
+			position: absolute;
+			line-height: 7px;
+			text-align: center;
+			/*margin: 81px 0 0 15.7px;*/
+		}
+
+		#c5 {
+			visibility: hidden;
+			width: 140px;
+			height: 41px;
+			z-index: 1;
+			position: absolute;
+			line-height: 7px;
+			text-align: center;
+			/*margin: 68px 0 0 67px;*/
+		}
+
+		#bg-exit {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0px;
+			left: 0px;
+			cursor: pointer;
+			opacity: 0;
+		}
+	</style>
+	<script type="text/javascript">
+		function bannerPlay() {
+			var MTL = new TimelineLite({ paused: false });
+			var c1 = document.getElementById('c1');
+			var c2 = document.getElementById('c2');
+			var c3 = document.getElementById('c3');
+			var c4 = document.getElementById('c4');
+			var c5 = document.getElementById('c5');
+			var cta = document.getElementById('cta');
+			var copyShow = new TimelineLite({ paused: false });
+			 var c1Move = new TimelineLite({ paused: false });
+			var c2Move = new TimelineLite({ paused: false });
+			var c3Move = new TimelineLite({ paused: false });
+			var c4Move = new TimelineLite({ paused: false });
+			var c5Move = new TimelineLite({ paused: false });
+			var ctaGlow = new TimelineLite({ paused: false });
+
+			 copyShow.add(TweenLite.to([c1, c2, c3,c5], .25, { visibility: "visible" }), 0);
+
+			 c1Move.add(TweenLite.from(c1, 1, { left: "+=400", alpha: 0 }), 0);
+			 c1Move.add(TweenLite.to(c1, 1, { left: "-=400", alpha: 0 }), 3);
+
+			c2Move.add(TweenLite.from(c2, 1, { left: "+=400", alpha: 0 }), 3.5);
+			c2Move.add(TweenLite.to(c2, 1, { left: "-=400", alpha: 0 }), 6.5);
+
+			c3Move.add(TweenLite.from(c3, 1, { left: "+=400", alpha: 0 }), 7);
+			//c3Move.add(TweenLite.to(bgImage, .5, {alpha:0}), 7);
+			c3Move.add(TweenLite.to(c3, 1, { left: "-=400", alpha: 0 }), 10.5);
+
+			//c4Move.add(TweenLite.from(c4, 1, { left: "+=400", alpha: 0 }), 10.5);
+			//c4Move.add(TweenLite.to(c4, 1, { left: "-=400", alpha: 0 }), 13.5);
+
+			c5Move.add(TweenLite.from(c5, 1, { left: "+=400", alpha: 0 }), 11.5);
+		}
+	</script>
+</head>
+
+<body>
+	<a href="javascript:window.open(window.clickTag)">
+		<div id="banner">
+			<div id="bg-exit"></div>
+			<div id="stage">
+				<div id="c1">
+					<svg xmlns="http://www.w3.org/2000/svg" width="300" height="100" viewBox="0 0 300 110">
+						<rect width="100%" height="100%" fill="transparent"/>
+						<text x="45%" y="90%" text-anchor="middle" fill="#2B286D" font-size="20" dy=".3em">
+						  DRIVEN BY EXCELLENCE
+						</text>
+					  </svg>
+				</div>
+
+				<div id="c2">
+					<svg xmlns="http://www.w3.org/2000/svg" width="300" height="100" viewBox="0 0 300 110">
+						<rect width="100%" height="100%" fill="transparent"/>
+						<text x="45%" y="90%" text-anchor="middle" fill="#2B286D" font-size="20" dy=".3em">
+						ENGINEERED FOR TOMORROW
+						</text>
+					  </svg>
+				</div>
+				<div id="c3"><!-- Generator: Adobe Illustrator 17.1.0, SVG Export Plug-In  -->
+					<svg xmlns="http://www.w3.org/2000/svg" width="300" height="100" viewBox="0 0 300 110">
+						<rect width="100%" height="100%" fill="transparent"/>
+						<text x="45%" y="90%" text-anchor="middle" fill="#2B286D" font-size="20" dy=".3em">
+						INNOVATION BEYOND LIMITS
+						</text>
+					  </svg>
+				</div>
+				 <div id="c4">
+					<svg xmlns="http://www.w3.org/2000/svg" width="300" height="100" viewBox="0 0 300 110">
+						<rect width="100%" height="100%" fill="transparent"/>
+						<text x="45%" y="90%" text-anchor="middle" fill="#2B286D" font-size="20" dy=".3em">
+						INNOVATION BEYOND LIMITS
+						</text>
+					  </svg>
+				</div>
+				<div id="c5">
+					<svg xmlns="http://www.w3.org/2000/svg" width="300" height="100" viewBox="0 0 300 110">
+						<rect width="100%" height="100%" fill="transparent"/>
+						<text x="45%" y="90%" text-anchor="middle" fill="#2B286D" font-size="20" dy=".3em">
+						  WELCOME TO BITS  PILANI
+						</text>
+					  </svg>
+				</div>
+				<div id="bgImage">
+					<img src="background.png" style="width: 288px;height: 237px;position: absolute;z-index: 0;">
+					<div id="logo">
+						<img src="logo.png" style="width: 70px;position: absolute;z-index: 0;">
+					</div>
+					<div id="cta">
+						<p class="unselectableText">
+							Learn More
+						</p>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+
+		<script type="text/javascript">
+
+
+
+			bannerPlay();
+
+
+		</script>
+	</a>
+</body>
